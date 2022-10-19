@@ -35,4 +35,17 @@ public class Turno {
             }
         }
     }
+
+
+    public boolean validar(int columna, char[][]tablero){
+
+        if(columna < 0 || columna > tablero[0].length){         //comprueba columna valida
+            return false;
+        }
+
+        if(tablero[0][columna] != ' '){                         //comprueba si columna llena
+            return false;
+        }
+        return true;
+    }
 }

@@ -14,6 +14,9 @@ public class Main {
 
         System.out.println("--- CONECTA 4 ---\n");
 
+        tablero.inicializar();
+        tablero.toString();
+
         Random rnd = new Random();
         int num = (rnd.nextInt() * 10+1);
         if(num%2 == 0){
