@@ -50,12 +50,19 @@ public class Tablero {
 
     @Override
     public String toString() {
-        String resultado="";
+        String resultado="---------------------------------\n";
+
         for (int y=0;y<filas;y++) {
-            for (int x=0;x<filas;x++)
-                resultado=resultado+tabl[x][y]+" ";
+            for (int x=0;x<filas;x++) {
+                if(x==0){
+                    resultado  = resultado + "| ";
+                }
+                resultado = resultado + tabl[x][y] + " | ";
+
+            }
             resultado=resultado+"\n";
         }
+        resultado = resultado + "---------------------------------\n";
         return resultado;
     }
 }
