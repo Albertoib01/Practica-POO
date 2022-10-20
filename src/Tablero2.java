@@ -44,12 +44,12 @@ public class Tablero2 {
     public String toString() {
         String resultado="---------------------------------\n";
 
-        for (int y=0;y< columnas;y++) {
-            for (int x=0;x< filas;x++) {
+        for (int y=0;y< filas;y++) {
+            for (int x=0;x< columnas;x++) {
                 if(x==0){
                     resultado  = resultado + "| ";
                 }
-                resultado = resultado + tablero[x][y] + " | ";
+                resultado = resultado + tablero[y][x] + " | ";
 
             }
             resultado=resultado+"\n";

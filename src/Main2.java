@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main2 {
 
     public static void main(String[] args) {
@@ -8,42 +10,58 @@ public class Main2 {
 
         int turno = 1;
 
-        while (turno <= 42) {
-            boolean seaValido;
-            int jugada;
-            do {
-                System.out.println(t1);
+        char respuesta = 's';
 
-                if (turno % 2 == 0) {
-                    System.out.println("Turno: " + jugador);
+        while (respuesta == 's' || respuesta == 'S'){
+            System.out.println(t1);
+            while (turno <= 42) {
+                boolean seaValido;
+                int jugada;
+                do {
+
+
+                    if (turno % 2 == 0) {
+                        System.out.println("Turno: " + jugador);
+                    } else {
+                        System.out.println("Turno: " + jugador);
+                    }
+                    System.out.println("Mete una columna [1-7]: ");
+
+                    java.util.Scanner sc = new java.util.Scanner(System.in);
+                    jugada = sc.nextInt() - 1;
+
+                    seaValido = validar(jugada, t1);
+
+                } while (seaValido == false);
+
+
+                //mete una ficha
+                for (int i = 6; i >= 0; i--) {
+                    if (t1.getPosicion(i, jugada) == ' ') {
+                        t1.setPosicion(i, jugada, jugador);
+                        break;
+                    }
+                }
+
+                //cambia entre los jugadores
+                if (jugador == 'R') {
+                    jugador = 'Y';
                 } else {
-                    System.out.println("Turno: " + jugador);
+                    jugador = 'R';
                 }
-                System.out.println("Mete una columna: ");
 
-                java.util.Scanner sc = new java.util.Scanner(System.in);
-                jugada = sc.nextInt();
-
-                seaValido = validar(jugada, t1);
-
-            } while (seaValido == false);
-
-            turno++;
-
-
-            for (int i = 7; i >= 0; i--) {
-                if (t1.getPosicion(jugada, i) == ' ') {
-                    t1.setPosicion(jugada, i, jugador);
-                    break;
-                }
+                turno++;
+                System.out.println(t1);
             }
 
 
-            if (jugador == 'R') {
-                jugador = 'Y';
-            } else {
-                jugador = 'R';
-            }
+            System.out.println("Tablero lleno");
+            System.out.println("Quieres continuar? (s/n)");
+
+
+            java.util.Scanner s = new java.util.Scanner(System.in).useDelimiter("\r\n");
+            respuesta = s.next("[sSnN]").charAt(0);
+            System.out.println(respuesta);
         }
     }
 
@@ -52,10 +70,12 @@ public class Main2 {
     public static boolean validar(int columna, Tablero2 tabl){
 
         if (columna < 0 || columna > 6){
+            System.out.println("Columna invalida. Valores [1-7]:");
             return false;
         }
 
         if (tabl.getPosicion(0, columna) != ' '){
+            System.out.println("Columna invalida. Columna llena.");
             return false;
         }
 
