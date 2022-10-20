@@ -7,7 +7,7 @@ public class Turno {
 
     private Jugador jugador;
 
-    private int fila, columna;
+    private int fila = 0, columna = 0;
 
     public Turno(Jugador jugador, Tablero tablero){
         this.jugador=jugador;
@@ -15,14 +15,14 @@ public class Turno {
     }
 
     public void colocarFicha(){
-        int lleno=0;
+
         String contenido;
         Scanner sc = new Scanner(System.in);
         System.out.println(tablero);
         System.out.println("Turno: "+jugador.getFicha());
         System.out.println("Introduce una columna donde dejar la ficha: ");
         columna = sc.nextInt();
-        while(columna>7 || columna<1){
+        while(!validar(columna, tablero)){
             System.out.println("Columna Incorrecta !! Valores [1-7]");
             System.out.println("Turno: "+jugador.getFicha());
             System.out.println("Introduce una columna donde dejar la ficha: ");
@@ -31,21 +31,24 @@ public class Turno {
         for(int i = 0; i<tablero.filas;i++){
             contenido=tablero.getPosicion(i,columna);
             if(contenido != ""){
-
+                i++;
+            } else {
+                tablero.setFicha(i, columna, jugador.getFicha());
             }
         }
     }
 
 
-    public boolean validar(int columna, char[][]tablero){
+    public boolean validar(int columna, Tablero tablero){
 
-        if(columna < 0 || columna > tablero[0].length){         //comprueba columna valida
-            return false;
-        }
+            if (columna < 0 || columna > 6) {                          //comprueba columna valida
+                return false;
+            }
 
-        if(tablero[0][columna] != ' '){                         //comprueba si columna llena
-            return false;
-        }
+            if (tablero.getPosicion(0, columna) != " ") {           //comprueba si columna llena
+                return false;
+            }
+
         return true;
     }
 }

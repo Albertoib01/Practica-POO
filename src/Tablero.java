@@ -24,7 +24,7 @@ public class Tablero {
 
     public void inicializar() {
         for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < filas; j++) {
+            for (int j = 0; j < columnas; j++) {
                 tabl[i][j] = "";
             }
         }
@@ -52,7 +52,7 @@ public class Tablero {
     public String toString() {
         String resultado="---------------------------------\n";
 
-        for (int y=0;y<filas;y++) {
+        for (int y=0;y<columnas;y++) {
             for (int x=0;x<filas;x++) {
                 if(x==0){
                     resultado  = resultado + "| ";

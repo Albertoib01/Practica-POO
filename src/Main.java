@@ -12,10 +12,11 @@ public class Main {
 
         Tablero tablero = new Tablero();
 
+        int contador = 0;
+
         System.out.println("--- CONECTA 4 ---\n");
 
-        tablero.inicializar();
-        tablero.toString();
+        System.out.println(tablero);
 
         Random rnd = new Random();
         int num = (rnd.nextInt() * 10+1);
