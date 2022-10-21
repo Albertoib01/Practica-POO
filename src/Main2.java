@@ -10,15 +10,14 @@ public class Main2 {
 
         int turno = 1;
 
-        char respuesta = 's';
+        String respuesta = "s";
 
-        while (respuesta == 's' || respuesta == 'S'){
+        while (respuesta == "s" || respuesta == "S"){
             System.out.println(t1);
             while (turno <= 42) {
                 boolean seaValido;
                 int jugada;
                 do {
-
 
                     if (turno % 2 == 0) {
                         System.out.println("Turno: " + jugador);
@@ -59,8 +58,8 @@ public class Main2 {
             System.out.println("Quieres continuar? (s/n)");
 
 
-            java.util.Scanner s = new java.util.Scanner(System.in).useDelimiter("\r\n");
-            respuesta = s.next("[sSnN]").charAt(0);
+            java.util.Scanner s = new java.util.Scanner(System.in);
+            respuesta = s.next();
             System.out.println(respuesta);
         }
     }
@@ -69,11 +68,13 @@ public class Main2 {
 
     public static boolean validar(int columna, Tablero2 tabl){
 
+        //comprueba si el parametro esta dentro de la cantidad de columnas
         if (columna < 0 || columna > 6){
             System.out.println("Columna invalida. Valores [1-7]:");
             return false;
         }
 
+        //comprueba si la columna pasada por parametro esta llena
         if (tabl.getPosicion(0, columna) != ' '){
             System.out.println("Columna invalida. Columna llena.");
             return false;
