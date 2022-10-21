@@ -59,8 +59,8 @@ public class Main2 {
             System.out.println("Quieres continuar? (s/n)");
 
 
-            java.util.Scanner s = new java.util.Scanner(System.in).useDelimiter("\r\n");
-            respuesta = s.next("[sSnN]").charAt(0);
+            java.util.Scanner s = new java.util.Scanner(System.in);
+            respuesta = s.next().charAt(0);
             System.out.println(respuesta);
         }
     }
