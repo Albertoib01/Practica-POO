@@ -61,7 +61,6 @@ public class Main2 {
 
             java.util.Scanner s = new java.util.Scanner(System.in);
             respuesta = s.next().charAt(0);
-            System.out.println(respuesta);
         }
     }
 
