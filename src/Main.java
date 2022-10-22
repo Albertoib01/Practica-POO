@@ -1,39 +1,84 @@
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
 
-        Turno turno;
+        Tablero t1 = new Tablero();
 
-        Jugador jugador1;
+        char jugador = 'R';
 
-        Jugador jugador2;
+        int turno ;
 
-        Tablero tablero = new Tablero();
-
-        int contador = 0;
-
-        System.out.println("--- CONECTA 4 ---\n");
-
-        System.out.println(tablero);
-
-        Random rnd = new Random();
-        int num = (rnd.nextInt() * 10+1);
-        if(num%2 == 0){
-            jugador1 = new Jugador("Y");
-            jugador2 = new Jugador("R");
-        }
-        else{
-            jugador1 = new Jugador("R");
-            jugador2 = new Jugador("Y");
-        }
+        char respuesta ;
 
         do{
-            turno = new Turno(jugador1,tablero);
-            turno.colocarFicha();
-            turno= new Turno(jugador2,tablero);
-            turno.colocarFicha();
-        }while(!tablero.lleno());
+            t1.inicializar();
+            turno = 1;
+            System.out.println(t1);
+            while (turno <= 42) {
+                boolean seaValido;
+                int jugada;
+                do {
+
+                    if (turno % 2 == 0) {
+                        System.out.println("Turno: " + jugador);
+                    } else {
+                        System.out.println("Turno: " + jugador);
+                    }
+                    System.out.println("Mete una columna [1-7]: ");
+
+                    Scanner sc = new Scanner(System.in);
+                    jugada = sc.nextInt() - 1;
+
+                    seaValido = validar(jugada, t1);
+
+                } while (seaValido == false);
+
+
+                //mete una ficha
+                for (int i = 6; i >= 0; i--) {
+                    if (t1.getPosicion(i, jugada) == ' ') {
+                        t1.setPosicion(i, jugada, jugador);
+                        break;
+                    }
+                }
+
+                //cambia entre los jugadores
+                if (jugador == 'R') {
+                    jugador = 'Y';
+                } else {
+                    jugador = 'R';
+                }
+
+                turno++;
+                System.out.println(t1);
+            }
+
+
+            System.out.println("Tablero lleno");
+            System.out.println("Quieres continuar? (s/n)");
+
+
+            Scanner s = new Scanner(System.in);
+            respuesta = s.next().charAt(0);
+        }while (respuesta == 's' || respuesta == 'S');
+    }
+
+
+
+    public static boolean validar(int columna, Tablero tabl){
+
+        if (columna < 0 || columna > 6){
+            System.out.println("Columna invalida. Valores [1-7]:");
+            return false;
+        }
+
+        if (tabl.getPosicion(0, columna) != ' '){
+            System.out.println("Columna invalida. Columna llena.");
+            return false;
+        }
+
+        return true;
     }
 }

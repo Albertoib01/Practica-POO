@@ -1,63 +1,45 @@
-public class Tablero {
+public class Tablero implements Itablero{
 
-    protected int filas;
+    protected final int filas = 6;
+    protected final int columnas = 7;
 
-    protected int columnas;
-
-    protected String[][] tabl;
+    private char[][] tablero;
 
 
-    public Tablero() {
-        tabl= new String[6][7];
-        inicializar();
+    public Tablero(){
+        tablero = new char[filas][columnas];
     }
 
-    public String getPosicion(int x, int y) {
-        return tabl[x][y];
-    }
-
-
-    public void setFicha(int x, int y, String ficha) {
-        tabl[x][y] = ficha;
-    }
-
-
-    public void inicializar() {
+    public void inicializar(){
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                tabl[i][j] = "";
+                tablero[i][j] = ' ';
             }
         }
     }
 
-    public boolean lleno(){
-        int lleno= filas*columnas;
-        int ocupadas=0;
-        boolean acabado= false;
-        for(int i=0;i<filas;i++){
-            for(int j=0;j<columnas;j++){
-                if(tabl[i][j]!=""){
-                    ocupadas++;
-                }
-            }
-        }
-        if(ocupadas==lleno){
-            acabado=true;
-        }
-        return acabado;
+    public void setPosicion(int x, int y, char valor){
+        tablero[x][y] = valor;
     }
 
 
-    @Override
+    public int getPosicion(int x, int y) {
+        if(x<filas && y<columnas)
+            return tablero[x][y];
+        return -1;
+    }
+
+
+
     public String toString() {
         String resultado="---------------------------------\n";
 
-        for (int y=0;y<columnas;y++) {
-            for (int x=0;x<filas;x++) {
+        for (int y=0;y< filas;y++) {
+            for (int x=0;x< columnas;x++) {
                 if(x==0){
                     resultado  = resultado + "| ";
                 }
-                resultado = resultado + tabl[x][y] + " | ";
+                resultado = resultado + tablero[y][x] + " | ";
 
             }
             resultado=resultado+"\n";

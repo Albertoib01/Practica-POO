@@ -1,10 +1,5 @@
 public interface Itablero {
 
-        /**
-         * Proporciona la estructura de datos del tablero.
-         * @return Array bidimensional de enteros, con los valores de cada casilla del tablero
-         */
-        char[][] getTablero();
 
         /**
          * Inicializa el tablero. Coloca un ' ' en todas sus posiciones.
@@ -12,18 +7,13 @@ public interface Itablero {
         void inicializar();
 
         /**
-         * Actualiza el tablero con los valores de una estructura de datos.
-         * @param tablero Array bidimensional de enteros, con los valores de cada casilla del tablero.
-         */
-        void setTablero(char[][] tablero);
-
-        /**
          * Actualiza el contenido de la casilla solicitada.
          * @param x Índice x.
          * @param y Índice y
          * @param valor Contenido a colocar en la casilla.
          */
-        void setPosicion(int x, int y, int valor);
+
+        void setPosicion(int x, int y, char valor);
 
         /**
          * Proporciona el contenido de la casilla solicitada.
