@@ -1,31 +1,21 @@
-public class Tablero2 {
+public class Tablero implements Itablero{
 
-    private final int filas = 6;
-    private final int columnas = 7;
+    protected final int filas = 6;
+    protected final int columnas = 7;
 
     private char[][] tablero;
 
 
-    public Tablero2(){
+    public Tablero(){
         tablero = new char[filas][columnas];
-        inicializar();
     }
 
-    private void inicializar(){
+    public void inicializar(){
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
                 tablero[i][j] = ' ';
             }
         }
-    }
-
-    public char[][] getTablero(){
-        return tablero;
-    }
-
-    public void setTablero(char[][] tablero) {
-        if(filas == tablero.length && columnas == tablero[0].length)
-            this.tablero=tablero;
     }
 
     public void setPosicion(int x, int y, char valor){

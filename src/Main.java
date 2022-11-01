@@ -1,24 +1,25 @@
 import java.util.Scanner;
 
-public class Main2 {
+public class Main {
 
     public static void main(String[] args) {
 
-        Tablero2 t1 = new Tablero2();
+        Tablero t1 = new Tablero();
 
         char jugador = 'R';
 
-        int turno = 1;
+        int turno ;
 
-        char respuesta = 's';
+        char respuesta ;
 
-        while (respuesta == 's' || respuesta == 'S'){
+        do{
+            t1.inicializar();
+            turno = 1;
             System.out.println(t1);
             while (turno <= 42) {
                 boolean seaValido;
                 int jugada;
                 do {
-
 
                     if (turno % 2 == 0) {
                         System.out.println("Turno: " + jugador);
@@ -27,7 +28,7 @@ public class Main2 {
                     }
                     System.out.println("Mete una columna [1-7]: ");
 
-                    java.util.Scanner sc = new java.util.Scanner(System.in);
+                    Scanner sc = new Scanner(System.in);
                     jugada = sc.nextInt() - 1;
 
                     seaValido = validar(jugada, t1);
@@ -59,15 +60,14 @@ public class Main2 {
             System.out.println("Quieres continuar? (s/n)");
 
 
-            java.util.Scanner s = new java.util.Scanner(System.in);
+            Scanner s = new Scanner(System.in);
             respuesta = s.next().charAt(0);
-            System.out.println(respuesta);
-        }
+        }while (respuesta == 's' || respuesta == 'S');
     }
 
 
 
-    public static boolean validar(int columna, Tablero2 tabl){
+    public static boolean validar(int columna, Tablero tabl){
 
         if (columna < 0 || columna > 6){
             System.out.println("Columna invalida. Valores [1-7]:");
