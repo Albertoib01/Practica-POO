@@ -4,15 +4,14 @@ public class Main2 {
 
     public static void main(String[] args) {
 
-        Tablero2 t1 = new Tablero2();
+        char respuesta = 's';
 
-        char jugador = 'R';
+        while (respuesta == 's' || respuesta == 'S'){
 
-        int turno = 1;
+            Tablero2 t1 = new Tablero2();
+            char jugador = 'R';
+            int turno = 1;
 
-        String respuesta = "s";
-
-        while (respuesta == "s" || respuesta == "S"){
             System.out.println(t1);
             while (turno <= 42) {
                 boolean seaValido;
@@ -31,7 +30,7 @@ public class Main2 {
 
                     seaValido = validar(jugada, t1);
 
-                } while (seaValido == false);
+                } while (!seaValido);
 
 
                 //mete una ficha
@@ -58,9 +57,9 @@ public class Main2 {
             System.out.println("Quieres continuar? (s/n)");
 
 
-            java.util.Scanner s = new java.util.Scanner(System.in);
-            respuesta = s.next();
-            System.out.println(respuesta);
+            Scanner s = new Scanner(System.in);
+            respuesta = s.next().charAt(0);
+
         }
     }
 
