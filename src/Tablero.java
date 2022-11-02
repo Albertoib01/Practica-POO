@@ -29,6 +29,21 @@ public class Tablero implements Itablero{
         return -1;
     }
 
+    public boolean validar(int columna, Tablero tabl){
+
+        if (columna < 0 || columna > 6){
+            System.out.println("Columna invalida. Valores [1-7]:");
+            return false;
+        }
+
+        if (tabl.getPosicion(0, columna) != ' '){
+            System.out.println("Columna invalida. Columna llena.");
+            return false;
+        }
+
+        return true;
+    }
+
 
 
     public String toString() {

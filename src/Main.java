@@ -2,55 +2,54 @@ import java.util.Scanner;
 
 public class Main {
 
+
     public static void main(String[] args) {
-
-        Tablero t1 = new Tablero();
-
-        char jugador = 'R';
-
-        int turno ;
 
         char respuesta ;
 
-        do{
-            t1.inicializar();
-            turno = 1;
+        do {
+
+            Tablero t1 = new Tablero();
+
+            Jugador jugador1 = new Jugador();
+            Jugador jugador2 = new Jugador();
+
+            jugador1.setFicha('R');
+            jugador2.setFicha('Y');
+
             System.out.println(t1);
+
+            int turno = 1;
+            t1.inicializar();
+
             while (turno <= 42) {
                 boolean seaValido;
                 int jugada;
                 do {
 
+
                     if (turno % 2 == 0) {
-                        System.out.println("Turno: " + jugador);
+                        System.out.println("Turno: " + jugador1.getFicha());
                     } else {
-                        System.out.println("Turno: " + jugador);
+                        System.out.println("Turno: " + jugador2.getFicha());
                     }
                     System.out.println("Mete una columna [1-7]: ");
 
                     Scanner sc = new Scanner(System.in);
                     jugada = sc.nextInt() - 1;
 
-                    seaValido = validar(jugada, t1);
+                    seaValido = t1.validar(jugada, t1);
 
-                } while (seaValido == false);
+                } while (!seaValido);
 
 
-                //mete una ficha
-                for (int i = 6; i >= 0; i--) {
-                    if (t1.getPosicion(i, jugada) == ' ') {
-                        t1.setPosicion(i, jugada, jugador);
-                        break;
-                    }
+                //mete ficha jugador en tablero
+                if(turno % 2 == 0){
+                    jugador1.meterFicha(jugada, t1, jugador1);
                 }
-
-                //cambia entre los jugadores
-                if (jugador == 'R') {
-                    jugador = 'Y';
-                } else {
-                    jugador = 'R';
+                else {
+                    jugador2.meterFicha(jugada, t1, jugador2);
                 }
-
                 turno++;
                 System.out.println(t1);
             }
@@ -63,22 +62,5 @@ public class Main {
             Scanner s = new Scanner(System.in);
             respuesta = s.next().charAt(0);
         }while (respuesta == 's' || respuesta == 'S');
-    }
-
-
-
-    public static boolean validar(int columna, Tablero tabl){
-
-        if (columna < 0 || columna > 6){
-            System.out.println("Columna invalida. Valores [1-7]:");
-            return false;
-        }
-
-        if (tabl.getPosicion(0, columna) != ' '){
-            System.out.println("Columna invalida. Columna llena.");
-            return false;
-        }
-
-        return true;
     }
 }
