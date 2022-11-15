@@ -62,4 +62,20 @@ public class Tablero implements Itablero{
         resultado = resultado + "---------------------------------\n";
         return resultado;
     }
+
+    public boolean comprobarTablero(){
+        int ocupado= 0;
+        boolean lleno = false;
+        for(int i = 0; i<6;i++){
+            for(int j = 0; j<7;j++){
+                if(tablero[i][j]!=' '){
+                    ocupado++;
+                }
+            }
+        }
+        if(ocupado == 42){
+            lleno  =true;
+        }
+        return lleno;
+    }
 }

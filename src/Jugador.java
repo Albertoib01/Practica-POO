@@ -1,5 +1,6 @@
 public class Jugador implements IJugador{
 
+
     private char ficha;
 
     public Jugador() {
