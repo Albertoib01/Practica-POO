@@ -1,72 +1,75 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Partida {
+    private Tablero table;
+    private String color1;
+    private String color2;
+    private boolean turno;
 
+    public Partida(String color1, String color2){
+        this.table = new Tablero();
+        this.color1=color1;
+        this.color2=color2;
 
-    private char respuesta ;
-
-    private boolean ganado;
-
-    private Tablero t1 = new Tablero();
-
-    private Jugador jugador1 = new Jugador();
-    private Jugador jugador2 = new Jugador();
-
-    private int turno = 1;
-
-
-    public Partida(){
+        turno=(new Random()).nextBoolean();
     }
 
-    public void jugar(){
-        jugador1.setFicha('R');
-        jugador2.setFicha('Y');
-        do{
-            t1.inicializar();
-            System.out.println(t1);
-            introducirFicha();
-            ganado=t1.comprobarVictoria();
-            if(t1.comprobarTablero()){
-                System.out.println("Quieres continuar? (s/n)");
-                Scanner s = new Scanner(System.in);
-                respuesta = s.next().charAt(0);
-            }
-        }while ((respuesta == 's' || respuesta == 'S') || !ganado);
-
-    }
-
-    public void introducirFicha(){
-        while (turno <= 42) {
-            int jugada = jugada();
-            if(turno % 2 == 0){
-                jugador1.meterFicha(jugada, t1, jugador1);
-            }
-            else {
-                jugador2.meterFicha(jugada, t1, jugador2);
-            }
-            turno++;
-            System.out.println(t1);
+    public boolean Ganador(int columna){
+        String ganador;
+        if(turno){
+            ganador=color1;
         }
-
+        else{
+            ganador=color2;
+        }
+        return table.Ganador(columna,ganador);
     }
-
-    public int jugada(){
-        int jugada;
-        boolean seaValido;
-        do {
-            if (turno % 2 == 0) {
-                System.out.println("Turno: " + jugador1.getFicha());
+    public void Comenzar() {
+        boolean inicio = true;
+        while (inicio) {
+            table.printTablero();
+            String color;
+            if (turno) {
+                color = color1;
+                System.out.println("Turno jugador " + color1);
             } else {
-                System.out.println("Turno: " + jugador2.getFicha());
+                color = color2;
+                System.out.println("Turno jugador " + color2);
             }
-            System.out.println("Mete una columna [1-7]: ");
+            System.out.print("Introduce columna. ");
+            System.out.println("Elige entre 1 y " + table.getColumnas() + ": ");
 
-            Scanner sc = new Scanner(System.in);
-            jugada = sc.nextInt() -1;
+            Scanner entrada = new Scanner(System.in);
+            int columna = entrada.nextInt()-1;
 
-            seaValido = t1.validar(jugada, t1);
+            boolean correcta = table.insertarFicha(columna,color);
 
-        } while (!seaValido);
-        return jugada;
+            if(correcta){
+                if(Ganador(columna)){
+                    table.printTablero();
+                    if(turno){
+                        System.out.println("Jugador " + color1 + " Gana!");
+                    }
+                    else{
+                        System.out.println("Jugador " + color2 + " Gana!");
+                    }
+                    System.out.println("Quieres jugar de nuevo? (y/n): ");
+                    Scanner entrada1 = new Scanner(System.in);
+                    String continuar = entrada1.nextLine();
+                    if(continuar.toLowerCase().equals("y") || continuar.equals("Y")){
+                        limpiar();
+                    }
+                    if(!(continuar.toLowerCase().equals("y") || continuar.equals("Y")) || continuar.toLowerCase().equals("n")|| continuar.equals("N")) {
+                        inicio=false;
+                    }
+                }
+                turno = !turno;
+            }
+        }
+    }
+    public void limpiar(){
+        this.table = new Tablero();
+        turno= (new Random()).nextBoolean();
     }
 }

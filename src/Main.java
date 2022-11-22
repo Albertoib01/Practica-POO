@@ -1,10 +1,8 @@
 import java.util.Scanner;
 
 public class Main {
-
-
     public static void main(String[] args) {
-        Partida partida = new Partida();
+        Partida conecta4 = new Partida("R","Y");
         Scanner sc = new Scanner(System.in);
         int opcion;
         System.out.println("---------Conecta 4---------\n");
@@ -12,7 +10,7 @@ public class Main {
         opcion = sc.nextInt();
         switch (opcion){
             case 0: break;
-            case 1: partida.jugar(); break;
+            case 1: conecta4.Comenzar(); break;
         }
     }
 }

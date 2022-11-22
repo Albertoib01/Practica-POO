@@ -1,4 +1,4 @@
-public class FichasV2 {
+public class Fichas {
     private String color;
 
     public String getColor(){
