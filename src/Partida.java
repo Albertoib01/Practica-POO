@@ -15,6 +15,11 @@ public class Partida {
         turno=(new Random()).nextBoolean();
     }
 
+    /**
+     *
+     * @param columna numero columna
+     * @return ganador o no
+     */
     public boolean Ganador(int columna){
         String ganador;
         if(turno){
@@ -25,6 +30,8 @@ public class Partida {
         }
         return table.Ganador(columna,ganador);
     }
+
+
     public void Comenzar() {
         boolean inicio = true;
         while (inicio) {
@@ -68,6 +75,10 @@ public class Partida {
             }
         }
     }
+
+    /**
+     * Limpia tablero
+     */
     public void limpiar(){
         this.table = new Tablero();
         turno= (new Random()).nextBoolean();

@@ -8,7 +8,12 @@ public class Tablero implements ITablero{
     }
 
 
-    /*revision vertical, horizontal y diagonal*/
+    /**
+     *
+     * @param columna numero de columna
+     * @param ganador jugador del turno actual
+     * @return gana jugador actual o no
+     */
     public boolean Ganador(int columna, String ganador){
         boolean ganadorAux= false;
         for(int fila=0; fila<filas;fila++){
@@ -88,6 +93,12 @@ public class Tablero implements ITablero{
         return ganadorAux;
     }
 
+    /**
+     *
+     * @param columna numero de columna
+     * @param color color jugador actual
+     * @return puede meter ficha en la columna o no
+     */
     public boolean insertarFicha(int columna,String color){
         if(columna>=0 && columna < columnas){
             //disponible
