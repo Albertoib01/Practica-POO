@@ -50,9 +50,11 @@ public class Partida {
             Scanner entrada = new Scanner(System.in);
             int columna = entrada.nextInt()-1;
 
-            boolean correcta = table.insertarFicha(columna,color);
+            //boolean correcta = table.insertarFicha(columna,color);
+            boolean correcta = table.validar(columna);
 
             if(correcta){
+                table.meterFicha(columna, color);
                 if(Ganador(columna)){
                     table.printTablero();
                     if(turno){

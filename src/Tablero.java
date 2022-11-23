@@ -8,6 +8,7 @@ public class Tablero implements ITablero{
     }
 
 
+
     /**
      *
      * @param columna numero de columna
@@ -93,38 +94,45 @@ public class Tablero implements ITablero{
         return ganadorAux;
     }
 
+
     /**
-     *
+     * Comprueba si la columna esta entre los parametros y no esta llena
      * @param columna numero de columna
-     * @param color color jugador actual
-     * @return puede meter ficha en la columna o no
+     * @return columna valida o no
      */
-    public boolean insertarFicha(int columna,String color){
-        if(columna>=0 && columna < columnas){
-            //disponible
-            if(table[0][columna]==null){
-                boolean inserta = false;
-                for(int fila=filas-1;fila>=0;fila--){
-                    if(table[fila][columna]==null){
-                        table[fila][columna]=new Fichas();
-                        table[fila][columna].setColor(color);
-                        inserta =true;
-                        break;
-                    }
-                }
-                return inserta;
-            }
-            //fila llena
-            else {
-                System.out.println("columna llena.");
-                return false;
-            }
-        }
-        else{
-            System.out.println("Fila incorrecta (fuera del rango[1-7]).");
+    public boolean validar(int columna){
+        if (columna < 0 || columna > columnas){
+            System.out.println("Columna invalida. Valores [1-7]:");
             return false;
         }
+
+        if (table[0][columna] != null){
+            System.out.println("Columna invalida. Columna llena.");
+            return false;
+        }
+
+        return true;
     }
+
+
+    /**
+     * Mete ficha en la columna
+     * @param columna numero de columna
+     * @param color color ficha actual
+     */
+    public void meterFicha(int columna, String color) {
+        for (int fila = filas-1; fila >= 0; fila--) {
+            if(table[fila][columna]==null){
+                table[fila][columna]=new Fichas();
+                table[fila][columna].setColor(color);
+                break;
+            }
+        }
+    }
+
+    /**
+     * Imprime el tablero
+     */
     public void  printTablero(){
         System.out.println("--- Conecta 4 ---");
         for(int columna=0;columna<columnas+2;columna++)
