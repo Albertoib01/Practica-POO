@@ -22,74 +22,96 @@ public class Tablero implements ITablero{
                 int progreso = 3;
 
                 //vertical
-                for(int filaAux = fila + 1; filaAux<filas;filaAux++){
-                    if(table[filaAux][columna].getColor() == ganador){
-                        progreso--;
-                        if(progreso==0){
-                            ganadorAux= true;
-                        }
-                    }
-                    else {
-                        progreso=3;
-                    }
-                }
+                ganadorAux=comprobarFila(fila,columna,ganador,progreso,ganadorAux);
                 /*para ser revisado se necesita 4*/
                 progreso =4;
                 //horizontal
-                for(int columnaAux=columna-3;columnaAux<=columna+3;columnaAux++){
-                    if(columnaAux<0)
-                        continue;
-
-                    if(columnaAux>=columnas)
-                        break;
-
-                    if(table[fila][columnaAux]!= null &&table[fila][columnaAux].getColor()==ganador){
-                        progreso--;
-                        if(progreso==0){
-                            ganadorAux= true;
-                        }
-                    }
-                    else {
-                        progreso=4;
-                    }
-                }
+                ganadorAux=comprobarHorizontal(fila,columna,ganador,progreso,ganadorAux);
                 progreso=4;
 
                 //diagonal izq
-                for(int filaAux=fila-3, columnaAux=columna-3;filaAux<=fila+3 && columnaAux<=columna+3;filaAux++,columnaAux++){
-                    if(filaAux < 0 || columnaAux < 0) continue;
-                    if(filaAux >=filas || columnaAux >=columnas) break;
-                    if(table[filaAux][columnaAux]!= null &&table[filaAux][columnaAux].getColor()==ganador){
-
-                        progreso--;
-                        if(progreso==0){
-                            ganadorAux= true;
-                        }
-                    }
-                    else {
-                        progreso=4;
-                    }
-                }
+                ganadorAux=comprobarDiagonalIZQ(fila,columna,ganador,progreso,ganadorAux);
                 progreso=4;
 
                 //diagonal drcha
-                for(int filaAux=fila-3, columnaAux=columna+3;filaAux<=fila+3 && columnaAux>=columna-3;filaAux++,columnaAux--){
-                    if(filaAux < 0 || columnaAux >=columnas) continue;
-                    if(filaAux >=filas || columnaAux <0) break;
-                    if(table[filaAux][columnaAux]!= null &&table[filaAux][columnaAux].getColor()==ganador){
+                ganadorAux=comprobarDiagonalDCH(fila,columna,ganador,progreso,ganadorAux);
 
-                        progreso--;
-                        if(progreso==0){
-                            ganadorAux= true;
-                        }
-                    }
-                    else {
-                        progreso=4;
-                    }
-                }
                 break;
             }
 
+        }
+        return ganadorAux;
+    }
+
+    public boolean comprobarFila(int fila, int columna, String ganador, int progreso,boolean ganadorAux){
+
+        for(int filaAux = fila + 1; filaAux<filas;filaAux++){
+            if(table[filaAux][columna].getColor() == ganador){
+                progreso--;
+                if(progreso==0){
+                    ganadorAux= true;
+                }
+            }
+            else {
+                progreso=3;
+            }
+        }
+        return ganadorAux;
+    }
+
+    public boolean comprobarHorizontal(int fila, int columna, String ganador, int progreso,boolean ganadorAux){
+        for(int columnaAux=columna-3;columnaAux<=columna+3;columnaAux++){
+            if(columnaAux<0)
+                continue;
+
+            if(columnaAux>=columnas)
+                break;
+
+            if(table[fila][columnaAux]!= null &&table[fila][columnaAux].getColor()==ganador){
+                progreso--;
+                if(progreso==0){
+                    ganadorAux= true;
+                }
+            }
+            else {
+                progreso=4;
+            }
+        }
+        return ganadorAux;
+    }
+
+    public boolean comprobarDiagonalIZQ(int fila, int columna, String ganador, int progreso,boolean ganadorAux){
+        for(int filaAux=fila-3, columnaAux=columna-3;filaAux<=fila+3 && columnaAux<=columna+3;filaAux++,columnaAux++){
+            if(filaAux < 0 || columnaAux < 0) continue;
+            if(filaAux >=filas || columnaAux >=columnas) break;
+            if(table[filaAux][columnaAux]!= null &&table[filaAux][columnaAux].getColor()==ganador){
+
+                progreso--;
+                if(progreso==0){
+                    ganadorAux= true;
+                }
+            }
+            else {
+                progreso=4;
+            }
+        }
+        return ganadorAux;
+    }
+
+    public boolean comprobarDiagonalDCH(int fila, int columna, String ganador, int progreso,boolean ganadorAux){
+        for(int filaAux=fila-3, columnaAux=columna+3;filaAux<=fila+3 && columnaAux>=columna-3;filaAux++,columnaAux--){
+            if(filaAux < 0 || columnaAux >=columnas) continue;
+            if(filaAux >=filas || columnaAux <0) break;
+            if(table[filaAux][columnaAux]!= null &&table[filaAux][columnaAux].getColor()==ganador){
+
+                progreso--;
+                if(progreso==0){
+                    ganadorAux= true;
+                }
+            }
+            else {
+                progreso=4;
+            }
         }
         return ganadorAux;
     }
