@@ -10,7 +10,7 @@ public class Tablero implements ITablero{
 
 
     /**
-     *
+     * Comprueba si el jugador actual es ganador
      * @param columna numero de columna
      * @param ganador jugador del turno actual
      * @return gana jugador actual o no
@@ -22,7 +22,7 @@ public class Tablero implements ITablero{
                 int progreso = 3;
 
                 //vertical
-                ganadorAux=comprobarFila(fila,columna,ganador,progreso,ganadorAux);
+                ganadorAux=comprobarVertical(fila,columna,ganador,progreso,ganadorAux);
                 /*para ser revisado se necesita 4*/
                 progreso =4;
                 //horizontal
@@ -43,7 +43,16 @@ public class Tablero implements ITablero{
         return ganadorAux;
     }
 
-    public boolean comprobarFila(int fila, int columna, String ganador, int progreso,boolean ganadorAux){
+    /**
+     * Comprueba si jugador gana con encadenado vertical
+     * @param fila numero fila
+     * @param columna numero columna
+     * @param ganador jugador actual
+     * @param progreso numero encadenados
+     * @param ganadorAux
+     * @return verdadero o falso si gana con vertical
+     */
+    public boolean comprobarVertical(int fila, int columna, String ganador, int progreso,boolean ganadorAux){
 
         for(int filaAux = fila + 1; filaAux<filas;filaAux++){
             if(table[filaAux][columna].getColor() == ganador){
@@ -59,6 +68,15 @@ public class Tablero implements ITablero{
         return ganadorAux;
     }
 
+    /**
+     * Comprueba si jugador gana con encadenado horizontal
+     * @param fila numero fila
+     * @param columna numero columna
+     * @param ganador jugador actual
+     * @param progreso numero encadenados
+     * @param ganadorAux
+     * @return verdadero o falso si gana con horizontal
+     */
     public boolean comprobarHorizontal(int fila, int columna, String ganador, int progreso,boolean ganadorAux){
         for(int columnaAux=columna-3;columnaAux<=columna+3;columnaAux++){
             if(columnaAux<0)
@@ -80,6 +98,15 @@ public class Tablero implements ITablero{
         return ganadorAux;
     }
 
+    /**
+     * Comprueba si jugador gana con encadenado diagonal izquierda
+     * @param fila numero fila
+     * @param columna numero columna
+     * @param ganador jugador actual
+     * @param progreso numero encadenados
+     * @param ganadorAux
+     * @return verdadero o falso si gana con diagonal izquierda
+     */
     public boolean comprobarDiagonalIZQ(int fila, int columna, String ganador, int progreso,boolean ganadorAux){
         for(int filaAux=fila-3, columnaAux=columna-3;filaAux<=fila+3 && columnaAux<=columna+3;filaAux++,columnaAux++){
             if(filaAux < 0 || columnaAux < 0) continue;
@@ -98,6 +125,15 @@ public class Tablero implements ITablero{
         return ganadorAux;
     }
 
+    /**
+     * Comprueba si jugador gana con encadenado diagonal derecha
+     * @param fila numero fila
+     * @param columna numero columna
+     * @param ganador jugador actual
+     * @param progreso numero encadenados
+     * @param ganadorAux
+     * @return verdadero o falso si gana con diagonal derecha
+     */
     public boolean comprobarDiagonalDCH(int fila, int columna, String ganador, int progreso,boolean ganadorAux){
         for(int filaAux=fila-3, columnaAux=columna+3;filaAux<=fila+3 && columnaAux>=columna-3;filaAux++,columnaAux--){
             if(filaAux < 0 || columnaAux >=columnas) continue;

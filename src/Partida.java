@@ -18,7 +18,7 @@ public class Partida {
     /**
      *
      * @param columna numero columna
-     * @return ganador o no
+     * @return verdadero o falso segun ganador o no
      */
     public boolean Ganador(int columna){
         String ganador;
@@ -31,6 +31,10 @@ public class Partida {
         return table.Ganador(columna,ganador);
     }
 
+
+    /**
+     * Inicia el juego
+     */
 
     public void Comenzar() {
         boolean inicio = true;
@@ -50,7 +54,6 @@ public class Partida {
             Scanner entrada = new Scanner(System.in);
             int columna = entrada.nextInt()-1;
 
-            //boolean correcta = table.insertarFicha(columna,color);
             boolean correcta = table.validar(columna);
 
             if(correcta){
