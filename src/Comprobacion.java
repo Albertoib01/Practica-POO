@@ -12,7 +12,7 @@ public class Comprobacion {
      * @param ganadorAux
      * @return verdadero o falso si gana con vertical
      */
-    public boolean comprobarVertical(Ficha[][] table,int fila, int columna, String ganador, int progreso,boolean ganadorAux){
+    public boolean comprobarVertical(Jugador[][] table, int fila, int columna, String ganador, int progreso, boolean ganadorAux){
 
         if(!ganadorAux){
             for (int filaAux = fila + 1; filaAux < filas; filaAux++) {
@@ -38,7 +38,7 @@ public class Comprobacion {
      * @param ganadorAux
      * @return verdadero o falso si gana con horizontal
      */
-    public boolean comprobarHorizontal(Ficha[][] table,int fila, int columna, String ganador, int progreso,boolean ganadorAux){
+    public boolean comprobarHorizontal(Jugador[][] table, int fila, int columna, String ganador, int progreso, boolean ganadorAux){
         if(!ganadorAux){
             for (int columnaAux = columna - 3; columnaAux <= columna + 3; columnaAux++) {
                 if (columnaAux < 0)
@@ -69,7 +69,7 @@ public class Comprobacion {
      * @param ganadorAux
      * @return verdadero o falso si gana con diagonal izquierda
      */
-    public boolean comprobarDiagonalIZQ(Ficha[][] table,int fila, int columna, String ganador, int progreso,boolean ganadorAux){
+    public boolean comprobarDiagonalIZQ(Jugador[][] table, int fila, int columna, String ganador, int progreso, boolean ganadorAux){
         if(!ganadorAux){
             for (int filaAux = fila - 3, columnaAux = columna - 3; filaAux <= fila + 3 && columnaAux <= columna + 3; filaAux++, columnaAux++) {
                 if (filaAux < 0 || columnaAux < 0) continue;
@@ -96,7 +96,7 @@ public class Comprobacion {
      * @param ganadorAux
      * @return verdadero o falso si gana con diagonal derecha
      */
-    public boolean comprobarDiagonalDCH(Ficha[][] table,int fila, int columna, String ganador, int progreso,boolean ganadorAux){
+    public boolean comprobarDiagonalDCH(Jugador[][] table, int fila, int columna, String ganador, int progreso, boolean ganadorAux){
         if(!ganadorAux){
             for (int filaAux = fila - 3, columnaAux = columna + 3; filaAux <= fila + 3 && columnaAux >= columna - 3; filaAux++, columnaAux--) {
                 if (filaAux < 0 || columnaAux >= columnas) continue;

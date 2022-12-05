@@ -3,7 +3,7 @@ public class Tablero implements ITablero{
     private final static int columnas = 7;
 
     Comprobacion conecta4 = new Comprobacion();
-    Ficha[][] table = new Ficha[filas][columnas];
+    Jugador[][] table = new Jugador[filas][columnas];
     public  int getColumnas(){
         return columnas;
     }
@@ -77,7 +77,7 @@ public class Tablero implements ITablero{
     public void meterFicha(int columna, String color) {
         for (int fila = filas-1; fila >= 0; fila--) {
             if(table[fila][columna]==null){
-                table[fila][columna]=new Ficha();
+                table[fila][columna]=new Jugador();
                 table[fila][columna].setColor(color);
                 break;
             }
