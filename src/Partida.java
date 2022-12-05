@@ -86,6 +86,6 @@ public class Partida {
      */
     public void limpiar(){
         this.table = new Tablero();
-        turno= (new Random()).nextBoolean();
+        turno = (new Random()).nextBoolean();
     }
 }

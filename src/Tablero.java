@@ -2,7 +2,8 @@ public class Tablero implements ITablero{
     private final static int filas = 6;
     private final static int columnas = 7;
 
-    Fichas[][] table = new Fichas[filas][columnas];
+    Comprobacion conecta4 = new Comprobacion();
+    Ficha[][] table = new Ficha[filas][columnas];
     public  int getColumnas(){
         return columnas;
     }
@@ -22,19 +23,19 @@ public class Tablero implements ITablero{
                 int progreso = 3;
 
                 //vertical
-                ganadorAux=comprobarVertical(fila,columna,ganador,progreso,ganadorAux);
+                ganadorAux=conecta4.comprobarVertical(table,fila,columna,ganador,progreso,ganadorAux);
                 /*para ser revisado se necesita 4*/
                 progreso =4;
                 //horizontal
-                ganadorAux=comprobarHorizontal(fila,columna,ganador,progreso,ganadorAux);
+                ganadorAux=conecta4.comprobarHorizontal(table,fila,columna,ganador,progreso,ganadorAux);
                 progreso=4;
 
                 //diagonal izq
-                ganadorAux=comprobarDiagonalIZQ(fila,columna,ganador,progreso,ganadorAux);
+                ganadorAux=conecta4.comprobarDiagonalIZQ(table,fila,columna,ganador,progreso,ganadorAux);
                 progreso=4;
 
                 //diagonal drcha
-                ganadorAux=comprobarDiagonalDCH(fila,columna,ganador,progreso,ganadorAux);
+                ganadorAux=conecta4.comprobarDiagonalDCH(table,fila,columna,ganador,progreso,ganadorAux);
 
                 break;
             }
@@ -43,118 +44,9 @@ public class Tablero implements ITablero{
         return ganadorAux;
     }
 
-    /**
-     * Comprueba si jugador gana con encadenado vertical
-     * @param fila numero fila
-     * @param columna numero columna
-     * @param ganador jugador actual
-     * @param progreso numero encadenados
-     * @param ganadorAux
-     * @return verdadero o falso si gana con vertical
-     */
-    public boolean comprobarVertical(int fila, int columna, String ganador, int progreso,boolean ganadorAux){
 
-        if(!ganadorAux){
-            for (int filaAux = fila + 1; filaAux < filas; filaAux++) {
-                if (table[filaAux][columna].getColor() == ganador) {
-                    progreso--;
-                    if (progreso == 0) {
-                        ganadorAux = true;
-                    }
-                } else {
-                    progreso = 3;
-                }
-            }
-        }
-        return ganadorAux;
-    }
 
-    /**
-     * Comprueba si jugador gana con encadenado horizontal
-     * @param fila numero fila
-     * @param columna numero columna
-     * @param ganador jugador actual
-     * @param progreso numero encadenados
-     * @param ganadorAux
-     * @return verdadero o falso si gana con horizontal
-     */
-    public boolean comprobarHorizontal(int fila, int columna, String ganador, int progreso,boolean ganadorAux){
-        if(!ganadorAux){
-            for (int columnaAux = columna - 3; columnaAux <= columna + 3; columnaAux++) {
-                if (columnaAux < 0)
-                    continue;
 
-                if (columnaAux >= columnas)
-                    break;
-
-                if (table[fila][columnaAux] != null && table[fila][columnaAux].getColor() == ganador) {
-                    progreso--;
-                    if (progreso == 0) {
-                        ganadorAux = true;
-                    }
-                } else {
-                    progreso = 4;
-                }
-            }
-        }
-        return ganadorAux;
-    }
-
-    /**
-     * Comprueba si jugador gana con encadenado diagonal izquierda
-     * @param fila numero fila
-     * @param columna numero columna
-     * @param ganador jugador actual
-     * @param progreso numero encadenados
-     * @param ganadorAux
-     * @return verdadero o falso si gana con diagonal izquierda
-     */
-    public boolean comprobarDiagonalIZQ(int fila, int columna, String ganador, int progreso,boolean ganadorAux){
-        if(!ganadorAux){
-            for (int filaAux = fila - 3, columnaAux = columna - 3; filaAux <= fila + 3 && columnaAux <= columna + 3; filaAux++, columnaAux++) {
-                if (filaAux < 0 || columnaAux < 0) continue;
-                if (filaAux >= filas || columnaAux >= columnas) break;
-                if (table[filaAux][columnaAux] != null && table[filaAux][columnaAux].getColor() == ganador) {
-
-                    progreso--;
-                    if (progreso == 0) {
-                        ganadorAux = true;
-                    }
-                } else {
-                    progreso = 4;
-                }
-            }
-        }
-        return ganadorAux;
-    }
-
-    /**
-     * Comprueba si jugador gana con encadenado diagonal derecha
-     * @param fila numero fila
-     * @param columna numero columna
-     * @param ganador jugador actual
-     * @param progreso numero encadenados
-     * @param ganadorAux
-     * @return verdadero o falso si gana con diagonal derecha
-     */
-    public boolean comprobarDiagonalDCH(int fila, int columna, String ganador, int progreso,boolean ganadorAux){
-        if(!ganadorAux){
-            for (int filaAux = fila - 3, columnaAux = columna + 3; filaAux <= fila + 3 && columnaAux >= columna - 3; filaAux++, columnaAux--) {
-                if (filaAux < 0 || columnaAux >= columnas) continue;
-                if (filaAux >= filas || columnaAux < 0) break;
-                if (table[filaAux][columnaAux] != null && table[filaAux][columnaAux].getColor() == ganador) {
-
-                    progreso--;
-                    if (progreso == 0) {
-                        ganadorAux = true;
-                    }
-                } else {
-                    progreso = 4;
-                }
-            }
-        }
-        return ganadorAux;
-    }
 
 
     /**
@@ -185,7 +77,7 @@ public class Tablero implements ITablero{
     public void meterFicha(int columna, String color) {
         for (int fila = filas-1; fila >= 0; fila--) {
             if(table[fila][columna]==null){
-                table[fila][columna]=new Fichas();
+                table[fila][columna]=new Ficha();
                 table[fila][columna].setColor(color);
                 break;
             }
