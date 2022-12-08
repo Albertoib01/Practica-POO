@@ -11,7 +11,11 @@ public class BasicV3 {
             while(!tablero.Final()) {
                 System.out.println();
                 switch (tablero.ultimoJugador) {
+<<<<<<< HEAD
                     //Turn R
+=======
+                  
+>>>>>>> 6e1a3e0a1bb09d0b6f146288a6ce3cf3cd06c9ea
                     case Conecta4V3.Y:
                         System.out.print("Turn: Red");
                         try {
@@ -24,11 +28,19 @@ public class BasicV3 {
                             System.out.println("Numero invalido. Values [1-7]");
                             break;
                         }
+<<<<<<< HEAD
                         //Movimiento de usuario
                         tablero.desplazaColumna(PosColumn -1, Conecta4V3.R);
                         System.out.println();
                         break;
                     //Turn Y
+=======
+                      
+                        tablero.desplazaColumna(PosColumn -1, Conecta4V3.R);
+                        System.out.println();
+                        break;
+                    
+>>>>>>> 6e1a3e0a1bb09d0b6f146288a6ce3cf3cd06c9ea
                     case Conecta4V3.R:
                         System.out.print("Turn: Yellow");
                         try {
@@ -41,7 +53,11 @@ public class BasicV3 {
                             System.out.println("Numero invalido. Values [1-7]");
                             break;
                         }
+<<<<<<< HEAD
                         //Movimiento de usuario
+=======
+                    
+>>>>>>> 6e1a3e0a1bb09d0b6f146288a6ce3cf3cd06c9ea
                         tablero.desplazaColumna(PosColumn -1, Conecta4V3.Y);
                         System.out.println();
                         break;
