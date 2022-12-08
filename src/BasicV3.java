@@ -11,7 +11,7 @@ public class BasicV3 {
             while(!tablero.Final()) {
                 System.out.println();
                 switch (tablero.ultimoJugador) {
-                    //If Y played last, then R plays now (blue color)
+                  
                     case Conecta4V3.Y:
                         System.out.print("Turn: Red");
                         try {
@@ -24,11 +24,11 @@ public class BasicV3 {
                             System.out.println("Numero invalido. Values [1-7]");
                             break;
                         }
-                        //Movement of the user
+                      
                         tablero.desplazaColumna(PosColumn -1, Conecta4V3.R);
                         System.out.println();
                         break;
-                    //If R played last, then Y plays now (red color)
+                    
                     case Conecta4V3.R:
                         System.out.print("Turn: Yellow");
                         try {
@@ -41,7 +41,7 @@ public class BasicV3 {
                             System.out.println("Numero invalido. Values [1-7]");
                             break;
                         }
-                        //Movement of the user
+                    
                         tablero.desplazaColumna(PosColumn -1, Conecta4V3.Y);
                         System.out.println();
                         break;
