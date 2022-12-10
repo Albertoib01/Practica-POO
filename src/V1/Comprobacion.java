@@ -1,3 +1,5 @@
+package V1;
+
 public class Comprobacion {
     private final static int filas = 6;
     private final static int columnas = 7;

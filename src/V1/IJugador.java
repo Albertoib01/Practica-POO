@@ -1,3 +1,5 @@
+package V1;
+
 public interface IJugador {
 
     /**

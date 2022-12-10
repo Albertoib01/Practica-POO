@@ -1,4 +1,8 @@
-public class Jugador implements IJugador{
+package V1;
+
+import V1.IJugador;
+
+public class Jugador implements IJugador {
     private String color;
 
     /**

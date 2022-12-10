@@ -1,3 +1,7 @@
+package V1;
+
+import V1.Partida;
+
 import java.util.Scanner;
 
 public class Menu {

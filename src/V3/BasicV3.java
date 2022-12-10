@@ -1,3 +1,5 @@
+package V3;
+
 import java.util.Scanner;
 public class BasicV3 {
     static int PosColumn;

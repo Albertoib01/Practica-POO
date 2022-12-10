@@ -1,3 +1,7 @@
+package V3;
+
+import V3.Conecta4V3;
+
 import java.util.Scanner;
 
 public class EntrenamientoV3 {

@@ -1,3 +1,7 @@
+package V1;
+
+import V1.Tablero;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -61,10 +65,10 @@ public class Partida {
                 if(Ganador(columna)){
                     table.printTablero();
                     if(turno){
-                        System.out.println("Jugador " + color1 + " Gana!");
+                        System.out.println("V1.Jugador " + color1 + " Gana!");
                     }
                     else{
-                        System.out.println("Jugador " + color2 + " Gana!");
+                        System.out.println("V1.Jugador " + color2 + " Gana!");
                     }
                     System.out.println("Quieres jugar de nuevo? (y/n): ");
                     Scanner entrada1 = new Scanner(System.in);

@@ -1,3 +1,5 @@
+package V1;
+
 public interface ITablero {
 
         boolean Ganador(int columna, String ganador);

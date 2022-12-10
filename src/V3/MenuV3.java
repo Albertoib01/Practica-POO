@@ -1,3 +1,9 @@
+package V3;
+
+import V3.BasicV3;
+import V3.DemoV3;
+import V3.EntrenamientoV3;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

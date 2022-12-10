@@ -1,4 +1,9 @@
-public class Tablero implements ITablero{
+package V1;
+
+import V1.Comprobacion;
+import V1.ITablero;
+
+public class Tablero implements ITablero {
     private final static int filas = 6;
     private final static int columnas = 7;
 
