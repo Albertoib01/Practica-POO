@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Basic {
+public class Basic implements IJuego{
     static int PosColumn;
     static Conecta4 tablero;
 
@@ -7,7 +7,13 @@ public class Basic {
     public void BasicPlay (){
         tablero = new Conecta4();
         tablero.printTablero();
+        jugar();
+        System.out.println();
+        ganador();
+    }
 
+    @Override
+    public void jugar() {
         while(!tablero.Final()) {
             System.out.println();
             switch (tablero.ultimoJugador) {
@@ -51,7 +57,10 @@ public class Basic {
             tablero.printTablero();
         }
 
-        System.out.println();
+    }
+
+    @Override
+    public void ganador() {
         if (tablero.ganadorAux == Conecta4.R) {
             System.out.println("R Gana!");
             System.out.println(tablero.Ganador);
@@ -62,5 +71,4 @@ public class Basic {
             System.out.println("Empate!!");
         }
     }
-
 }

@@ -69,7 +69,7 @@ public class Entrenamiento implements IJuego{
 =======
 import java.util.Scanner;
 
-public class Entrenamiento {
+public class Entrenamiento implements IJuego{
         static int PosColumn;
         static Conecta4 tablero;
         //se define el usuario cpu
@@ -80,7 +80,12 @@ public class Entrenamiento {
             cpu = new MiniMax(Conecta4.Y);
             tablero = new Conecta4();
             tablero.printTablero();
+            jugar();
+            System.out.println();
+            ganador();
+        }
 
+        public void jugar(){
             while(!tablero.Final()) {
                 System.out.println();
                 switch (tablero.ultimoJugador) {
@@ -113,18 +118,20 @@ public class Entrenamiento {
                 tablero.printTablero();
             }
 
-            System.out.println();
-            if (tablero.ganadorAux == Conecta4.R) {
-                System.out.println("R Gana!");
-                System.out.println(tablero.Ganador);
-            } else if (tablero.ganadorAux == Conecta4.Y) {
-                System.out.println("CPU Y GANA!");
-                System.out.println(tablero.Ganador);
-            } else {
-                System.out.println("TIED!!");
-            }
-
         }
+
+    @Override
+    public void ganador() {
+        if (tablero.ganadorAux == Conecta4.R) {
+            System.out.println("R Gana!");
+            System.out.println(tablero.Ganador);
+        } else if (tablero.ganadorAux == Conecta4.Y) {
+            System.out.println("CPU Y GANA!");
+            System.out.println(tablero.Ganador);
+        } else {
+            System.out.println("TIED!!");
+        }
+    }
 
 }
 >>>>>>> 4be5dc2 (Clases útiles)

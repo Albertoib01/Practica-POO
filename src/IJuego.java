@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 public interface IJuego {
 
     /**
@@ -10,3 +11,11 @@ public interface IJuego {
      */
     void ganador();
 }
+=======
+public interface IJuego {
+
+    void jugar();
+
+    void ganador();
+}
+>>>>>>> f1d7ef4 (IJuego)
