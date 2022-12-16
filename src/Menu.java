@@ -33,7 +33,7 @@ public class Menu
                             Scanner entrada1 = new Scanner(System.in);
                             continuar = entrada1.nextLine();
                         } while (continuar.toLowerCase().equals("y") || continuar.equals("Y"));
-                        if(!(continuar.toLowerCase().equals("y") || continuar.equals("Y")) || continuar.toLowerCase().equals("n")|| continuar.equals("N")) {
+                        if(!(continuar.toLowerCase().equals("y") || continuar.equals("Y") || continuar.toLowerCase().equals("n")|| continuar.equals("N"))) {
                             salir=true;
                         }
                         break;
@@ -45,7 +45,7 @@ public class Menu
                             Scanner entrada1 = new Scanner(System.in);
                             continuar = entrada1.nextLine();
                         } while (continuar.toLowerCase().equals("y") || continuar.equals("Y"));
-                        if(!(continuar.toLowerCase().equals("y") || continuar.equals("Y")) || continuar.toLowerCase().equals("n")|| continuar.equals("N")) {
+                        if(!(continuar.toLowerCase().equals("y") || continuar.equals("Y") || continuar.toLowerCase().equals("n")|| continuar.equals("N"))) {
                             salir=true;
                         }
                         break;
@@ -57,7 +57,7 @@ public class Menu
                             Scanner entrada1 = new Scanner(System.in);
                             continuar = entrada1.nextLine();
                         } while (continuar.toLowerCase().equals("y") || continuar.equals("Y"));
-                        if(!(continuar.toLowerCase().equals("y") || continuar.equals("Y")) || continuar.toLowerCase().equals("n")|| continuar.equals("N")) {
+                        if(!(continuar.toLowerCase().equals("y") || continuar.equals("Y") || continuar.toLowerCase().equals("n")|| continuar.equals("N"))) {
                             salir=true;
                         }
                         break;
@@ -72,6 +72,10 @@ public class Menu
                 sn.next();
             }
         }
+
+    }
+
+    public void modoBasico(String continuar){
 
     }
 
