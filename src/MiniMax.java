@@ -3,8 +3,8 @@ import java.util.Random;
 
 public class MiniMax {
     //Profundidad, cuanto mayor mayor profundidad mayor es su efectividad de decision
-    int Depth;
-    int cpu;
+    protected int Depth;
+    protected int cpu;
 
     public MiniMax(int jugador) {
         Depth = 5;

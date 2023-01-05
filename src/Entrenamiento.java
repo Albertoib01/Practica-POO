@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 public class Entrenamiento implements IJuego{
-    static int PosColumn;
-    static Conecta4 tablero;
+    private static int PosColumn;
+    private static Conecta4 tablero;
     //se define el usuario cpu
-    static MiniMax cpu;
+    private static MiniMax cpu;
 
     public void entrenamiento() {
 

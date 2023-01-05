@@ -2,20 +2,20 @@ import java.util.LinkedList;
 
 public class Conecta4 {
     //Usuarios
-    static final int R = 1;
+    protected static final int R = 1;
 
-    static final int Y = -1;
+    protected static final int Y = -1;
 
-    int valorAux = 0;
+    protected int valorAux = 0;
 
-    Tabla MovimientoFinal;
-    int ultimoJugador;
-    int ganadorAux;
-    int [][] Tablero;
-    int filas=6,columnas=7;
-    String Ganador;
+    protected Tabla MovimientoFinal;
+    protected int ultimoJugador;
+    protected int ganadorAux;
+    protected int [][] Tablero;
+    protected int filas=6,columnas=7;
+    protected String Ganador;
 
-    Desplazamiento despl;
+    protected Desplazamiento despl;
 
 
     /**

@@ -1,9 +1,9 @@
 public class Demo implements IJuego{
 
 
-    static int PosColumn;
-    static Conecta4 tablero;
-    static MiniMax cpu;
+    private static int PosColumn;
+    private static Conecta4 tablero;
+    private static MiniMax cpu;
 
     public void ComenzarDemo() {
 

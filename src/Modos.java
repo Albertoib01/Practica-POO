@@ -1,6 +1,5 @@
 public class Modos {
-
-    Basic basic = new Basic();
-    Demo demo = new Demo();
-    Entrenamiento training = new Entrenamiento();
+    protected Basic basic = new Basic();
+    protected Demo demo = new Demo();
+    protected Entrenamiento training = new Entrenamiento();
 }

@@ -1,6 +1,6 @@
 public class Tabla {
-    int fila;
-    int col;
+    protected int fila;
+    protected int col;
     private int valor;
 
     public Tabla() {
@@ -28,13 +28,6 @@ public class Tabla {
 
 
     /**
-     * @return numero de fila
-     */
-    public int getFila() {
-        return fila;
-    }
-
-    /**
      * Actualiza el valor de la fila
      * @param fila1
      */
@@ -42,12 +35,6 @@ public class Tabla {
         fila = fila1;
     }
 
-    /**
-     * @return numero de columnas
-     */
-    public int getCol() {
-        return col;
-    }
 
     /**
      * Actualiza el valor de la columna
