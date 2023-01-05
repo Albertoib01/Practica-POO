@@ -43,6 +43,11 @@ public class Conecta4 {
     }
 
     //Posicion: vertical, horizontal, diagonal.
+
+    /**
+     * Determina como ha ganado el jugador
+     * @param PosicionGanador posicion jugador ganador
+     */
     public void Posicion(String PosicionGanador) {
         this.Ganador = PosicionGanador;
     }
@@ -162,10 +167,12 @@ public class Conecta4 {
         return hijos;
     }
 
+
     /**
      *
      * @return
      */
+
     public int utilityFunction() {
         //MAX jugadas de  'Y'
         // +90 si 'Y' gana, -90 'R' pierde,

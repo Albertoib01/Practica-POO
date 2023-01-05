@@ -4,9 +4,8 @@ import java.util.Scanner;
 public class Menu
 {
     public  void ComenzarMenu() {
-        Basic basic = new Basic();
-        Demo demo = new Demo();
-        Entrenamiento training = new Entrenamiento();
+
+        Modos modo = new Modos();
 
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
@@ -28,7 +27,7 @@ public class Menu
                         String continuar;
                         do {
                             System.out.println("Has seleccionado la opcion 1 (mode Basic)");
-                            basic.BasicPlay();
+                            modo.basic.BasicPlay();
                             System.out.println("Quieres jugar de nuevo? (y/n): ");
                             Scanner entrada1 = new Scanner(System.in);
                             continuar = entrada1.nextLine();
@@ -40,7 +39,7 @@ public class Menu
                     case 2:
                         do {
                             System.out.println("Has seleccionado la opcion 2 (mode Training)");
-                            training.entrenamiento();
+                            modo.training.entrenamiento();
                             System.out.println("Quieres jugar de nuevo? (y/n): ");
                             Scanner entrada1 = new Scanner(System.in);
                             continuar = entrada1.nextLine();
@@ -52,7 +51,7 @@ public class Menu
                     case 3:
                         do {
                             System.out.println("Has seleccionado la opcion 3 (mode Demo)");
-                            demo.ComenzarDemo();
+                            modo.demo.ComenzarDemo();
                             System.out.println("Quieres jugar de nuevo? (y/n): ");
                             Scanner entrada1 = new Scanner(System.in);
                             continuar = entrada1.nextLine();
@@ -75,8 +74,5 @@ public class Menu
 
     }
 
-    public void modoBasico(String continuar){
-
-    }
 
 }
