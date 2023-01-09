@@ -4,6 +4,10 @@ public class Basic implements IJuego{
     private static Conecta4 tablero;
 
 
+    protected Basic(){
+
+    }
+
     public void BasicPlay (){
         tablero = new Conecta4();
         tablero.printTablero();

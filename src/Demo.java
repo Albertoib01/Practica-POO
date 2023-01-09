@@ -5,6 +5,10 @@ public class Demo implements IJuego{
     private static Conecta4 tablero;
     private static MiniMax cpu;
 
+    protected Demo(){
+
+    }
+
     public void ComenzarDemo() {
 
         cpu = new MiniMax(Conecta4.Y);

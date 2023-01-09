@@ -1,8 +1,7 @@
 public class Desplazamiento {
 
     private Tabla tabla = new Tabla();
-    public Desplazamiento(){
-
+    protected Desplazamiento(){
     }
 
     /**

@@ -3,12 +3,11 @@ public class Tabla {
     protected int col;
     private int valor;
 
-    public Tabla() {
+    protected Tabla() {
         fila = -1;
         col = -1;
         valor = 0;
     }
-
 
 
     /**

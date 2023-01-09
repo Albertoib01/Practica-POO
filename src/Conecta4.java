@@ -23,7 +23,7 @@ public class Conecta4 {
     /**
      * Inicializa el tablero
      */
-    public Conecta4() {
+    protected Conecta4() {
         MovimientoFinal = new Tabla();
         ultimoJugador = Y; //The user starts first
         ganadorAux = 0;
@@ -88,7 +88,7 @@ public class Conecta4 {
      * @param col numero columna
      * @return valido o no
      */
-    public boolean Movimiento(int fila, int col) {
+    public boolean  Movimiento(int fila, int col) {
 
         if ((fila <= -1) || (col <= -1) || (fila > 5) || (col > 6)) {
             return false;

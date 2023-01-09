@@ -3,6 +3,10 @@ import java.util.Scanner;
 
 public class Menu
 {
+
+    protected Menu(){
+
+    }
     public  void ComenzarMenu() {
 
         Modos modo = new Modos();

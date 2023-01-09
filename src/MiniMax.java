@@ -6,7 +6,7 @@ public class MiniMax {
     protected int Depth;
     protected int cpu;
 
-    public MiniMax(int jugador) {
+    protected MiniMax(int jugador) {
         Depth = 5;
         cpu = jugador;
     }

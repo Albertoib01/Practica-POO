@@ -8,6 +8,10 @@ public class Entrenamiento implements IJuego{
 
     private Memento memento;
 
+    protected Entrenamiento(){
+
+    }
+
     public void entrenamiento() {
 
         cpu = new MiniMax(Conecta4.Y);
