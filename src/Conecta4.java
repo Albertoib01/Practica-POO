@@ -60,19 +60,11 @@ public class Conecta4 {
      * @param letra letra del jugador
      */
     public void desplazaColumna(int col, int letra) {
-        guardarEstado(MovimientoFinal);
         MovimientoFinal = despl.desplazamiento(FilaLlena(col), col);
         Tablero[FilaLlena(col)][col] = letra;
         ultimoJugador = letra;
     }
 
-    public void guardarEstado(Tabla tabla){
-        memento = new Memento(tabla);
-    }
-
-    public void recuperarEstado(){
-        MovimientoFinal = memento.recoverOldTablero();
-    }
 
     /**
      * Comprueba si la columna metida es valida

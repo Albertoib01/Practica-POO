@@ -6,6 +6,8 @@ public class Entrenamiento implements IJuego{
     //se define el usuario cpu
     private static MiniMax cpu;
 
+    private Memento memento;
+
     public void entrenamiento() {
 
         cpu = new MiniMax(Conecta4.Y);
@@ -15,10 +17,11 @@ public class Entrenamiento implements IJuego{
         System.out.println();
         ganador();
     }
-
+    @Override
     public void jugar(){
         String opcion;
         while(!tablero.Final()) {
+            guardarEstado(tablero);
             System.out.println();
             switch (tablero.ultimoJugador) {
 
@@ -42,7 +45,7 @@ public class Entrenamiento implements IJuego{
                     opcion = op.nextLine();
                     if (opcion.equals("n") || opcion.equals("N")){
                         System.out.println("Prueba");
-                        tablero.recuperarEstado();
+                        recuperarEstado();
                         tablero.ultimoJugador = Conecta4.Y;
                     }
                     break;
@@ -59,6 +62,12 @@ public class Entrenamiento implements IJuego{
         }
 
     }
+
+    public void guardarEstado(Conecta4 tabla){
+        memento = new Memento(tabla);
+    }
+
+    public void recuperarEstado(){tablero = memento.recoverOldTablero();}
 
     @Override
     public void ganador() {

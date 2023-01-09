@@ -1,11 +1,9 @@
 public class Memento {
-    public Tabla tablero;
+    public Conecta4 tablero;
 
-    public Memento(Tabla tabl){
-        this.tablero=tabl;
-    }
+    public Memento(Conecta4 tabl){this.tablero=tabl;}
 
-    public Tabla recoverOldTablero(){
+    public Conecta4 recoverOldTablero(){
         return tablero;
     }
 }
