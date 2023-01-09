@@ -1,5 +1,5 @@
 public class Memento {
-    public Conecta4 tablero;
+    private Conecta4 tablero;
 
     protected Memento(Conecta4 tabl){this.tablero=tabl;}
 
