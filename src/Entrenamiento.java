@@ -17,6 +17,7 @@ public class Entrenamiento implements IJuego{
     }
 
     public void jugar(){
+        String opcion;
         while(!tablero.Final()) {
             System.out.println();
             switch (tablero.ultimoJugador) {
@@ -36,6 +37,14 @@ public class Entrenamiento implements IJuego{
 
                     tablero.desplazaColumna(PosColumn -1, Conecta4.R);
                     System.out.println();
+                    System.out.println("\nHa colocado la ficha donde queria?(s/n) ");
+                    Scanner op = new Scanner(System.in);
+                    opcion = op.nextLine();
+                    if (opcion.equals("n") || opcion.equals("N")){
+                        System.out.println("Prueba");
+                        tablero.recuperarEstado();
+                        tablero.ultimoJugador = Conecta4.Y;
+                    }
                     break;
 
                 case Conecta4.R:
